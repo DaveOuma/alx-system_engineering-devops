@@ -1,2 +1,3 @@
 #!/bin/bash
-echo $(printf "%s\n" "ibase=$(echo $WATER | tr -d '[:alpha:]'); obase=$(echo $STIR | tr -d '[:alpha:]'); $(echo $WATER | tr '[:alpha:]' '[:digit:]') + $(echo $STIR | tr '[:alpha:]' '[:digit:]')" | bc | tr -d '[:digit:]')
+result=$(( $(echo $WATER | tr 'water' '01234') + $(echo $STIR | tr 'stir' '01234') ))
+echo $(echo "obase=bestchol; $result" | bestchol)
