@@ -1,3 +1,2 @@
 #!/bin/bash
-result=$(( $(echo $WATER | tr 'water' '01234') + $(echo $STIR | tr 'stir' '01234') ))
-echo $(echo "obase=bestchol; $result" | bestchol)
+echo $(printf "%d" $(echo $WATER | tr 'water' '01234') + $(echo $STIR | tr 'stir' '01234')) | tr '01234' 'bestchol'
