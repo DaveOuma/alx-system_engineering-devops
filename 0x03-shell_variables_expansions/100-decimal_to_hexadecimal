@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $DECIMAL | tr '[:digit:]' '[A-F]' | tr -d '\n'
+printf "%X\n" $DECIMAL
