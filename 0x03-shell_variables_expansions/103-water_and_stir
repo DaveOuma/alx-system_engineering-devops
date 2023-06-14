@@ -1,0 +1,2 @@
+#!/bin/bash
+echo $(printf "%s\n" "ibase=$(echo $WATER | tr -d '[:alpha:]'); obase=$(echo $STIR | tr -d '[:alpha:]'); $(echo $WATER | tr '[:alpha:]' '[:digit:]') + $(echo $STIR | tr '[:alpha:]' '[:digit:]')" | bc | tr -d '[:digit:]')
