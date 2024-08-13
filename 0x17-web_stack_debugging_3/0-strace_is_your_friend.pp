@@ -1,6 +1,21 @@
-# Fixes bad `phpp` extensions to `php` in the WordPress file `wp-settings.php`.
+# Ensure Apache configuration file is correct
 
-exec { 'fix-wordpress':
-  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
-  path    => '/usr/local/bin/:/bin/'
+file { '/etc/apache2/sites-available/000-default.conf':
+  ensure  => file,
+  content => template('0x17-web_stack_debugging_3/templates/000-default.conf.erb'),
+  notify  => Service['apache2'],
 }
+
+file { '/var/www/html/wp-config.php':
+  ensure  => file,
+  owner   => 'www-data',
+  group   => 'www-data',
+  mode    => '0644',
+  notify  => Service['apache2'],
+}
+
+service { 'apache2':
+  ensure => running,
+  enable => true,
+}
+
