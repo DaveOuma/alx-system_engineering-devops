@@ -1,0 +1,8 @@
+api_key: YOUR_DATADOG_API_KEY
+site: datadoghq.com  # Change to datadoghq.eu if you're using the EU site
+
+# Optional settings
+logs_enabled: true
+apm_config:
+  enabled: true
+
